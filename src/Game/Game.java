@@ -1,17 +1,14 @@
 package Game;
 
 import javax.swing.*;
-import java.awt.*;
 
 public class Game {
-    public static final int WIDTH = 640, HEIGHT = 500;
-
     public static void main(String[] args) {
         JFrame frame = new JFrame("Super Rainbow Reef");
 
 
         JFrame startScreen = new JFrame();
-        JButton start = new JButton("Press spacebar to play!");
+        JButton start = new JButton("Click or press spacebar to start!!");
                                                                                                                                                                                                                                                                                                                                                                                                                                                     GamePanel panel = new GamePanel(frame, startScreen);
 
         start.addActionListener(listener -> {

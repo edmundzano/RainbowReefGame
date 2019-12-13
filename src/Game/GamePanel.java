@@ -60,22 +60,22 @@ public class GamePanel extends JPanel implements KeyListener {
             walls.add(new Wall((i * 20), 0, 20, 20, "Wall.gif"));
         for (int i = 0; i < 23; i++) //vertical walls (right)
             walls.add(new Wall(620, (i * 20), 20, 20, "Wall.gif"));
-        //left blocks
-        for (int i = 1; i < 7; i++)
+
+        for (int i = 1; i < 13; i++)
             blocks.add(new Block((i * 46 + 20), 21, 45, 20, "Block7.gif"));
-        for (int i = 1; i < 7; i++)
+        for (int i = 1; i < 13; i++)
             blocks.add(new Block((i * 46 + 20), 42, 45, 20, "Block6.gif"));
-        for (int i = 0; i < 7; i++)
+        for (int i = 0; i < 13; i++)
             blocks.add(new Block((i * 46 + 20), 63, 45, 20, "Block5.gif"));
-        for (int i = 0; i < 7; i++)
+        for (int i = 0; i < 13; i++)
             blocks.add(new Block((i * 46 + 20), 84, 45, 20, "Block4.gif"));
-        for (int i = 0; i < 7; i++)
+        for (int i = 0; i < 13; i++)
             blocks.add(new Block((i * 46 + 20), 105, 45, 20, "Block3.gif"));
-        for (int i = 0; i < 7; i++)
+        for (int i = 0; i < 13; i++)
             blocks.add(new Block((i * 46 + 20), 126, 45, 20, "Block2.gif"));
-        for (int i = 0; i < 7; i++)
+        for (int i = 0; i < 13; i++)
             blocks.add(new Block((i * 46 + 20), 147, 45, 20, "Block1.gif"));
-        //right blocks
+        /*
         for (int i = 7; i < 13; i++)
             blocks.add(new Block((i * 46 + 20) + 3, 21, 45, 20, "Block7.gif"));
         for (int i = 7; i < 13; i++)
@@ -90,6 +90,8 @@ public class GamePanel extends JPanel implements KeyListener {
             blocks.add(new Block((i * 46 + 20) + 3, 126, 45, 20, "Block6.gif"));
         for (int i = 7; i < 13; i++)
             blocks.add(new Block((i * 46 + 20) + 3, 147, 45, 20, "Block5.gif"));
+
+         */
         addKeyListener(this);
         setFocusable(true);
 
