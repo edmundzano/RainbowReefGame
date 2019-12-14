@@ -1,4 +1,4 @@
-package Game;
+package GameObjects;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -12,7 +12,7 @@ public class Wall extends Rectangle {
 
 
     //x = x-coordinate, y = y-coordinate, h = height, w = width, s = location of image
-    Wall(int x, int y, int w, int h, String s) {
+    public Wall(int x, int y, int w, int h, String s) {
         this.x = x;
         this.y = y;
 

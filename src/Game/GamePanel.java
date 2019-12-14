@@ -1,5 +1,7 @@
 package Game;
 
+import GameObjects.*;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -75,23 +77,7 @@ public class GamePanel extends JPanel implements KeyListener {
             blocks.add(new Block((i * 46 + 20), 126, 45, 20, "Block2.gif"));
         for (int i = 0; i < 13; i++)
             blocks.add(new Block((i * 46 + 20), 147, 45, 20, "Block1.gif"));
-        /*
-        for (int i = 7; i < 13; i++)
-            blocks.add(new Block((i * 46 + 20) + 3, 21, 45, 20, "Block7.gif"));
-        for (int i = 7; i < 13; i++)
-            blocks.add(new Block((i * 46 + 20) + 3, 42, 45, 20, "Block2.gif"));
-        for (int i = 7; i < 13; i++)
-            blocks.add(new Block((i * 46 + 20) + 3, 63, 45, 20, "Block3.gif"));
-        for (int i = 7; i < 13; i++)
-            blocks.add(new Block((i * 46 + 20) + 3, 84, 45, 20, "Block1.gif"));
-        for (int i = 7; i < 13; i++)
-            blocks.add(new Block((i * 46 + 20) + 3, 105, 45, 20, "Block4.gif"));
-        for (int i = 7; i < 13; i++)
-            blocks.add(new Block((i * 46 + 20) + 3, 126, 45, 20, "Block6.gif"));
-        for (int i = 7; i < 13; i++)
-            blocks.add(new Block((i * 46 + 20) + 3, 147, 45, 20, "Block5.gif"));
 
-         */
         addKeyListener(this);
         setFocusable(true);
 
@@ -105,14 +91,23 @@ public class GamePanel extends JPanel implements KeyListener {
         if (pop.x > (getWidth() - 45) || pop.x < 20) {
             pop.moveX *= -1;
         }
-        if (pop.y < 20 || pop.intersects(katch)) {
+        if (pop.intersects(katch)) {
             pop.moveY *= -1;
+            if(pop.getX() < katch.getX() + katch.getWidth() / 2 - katch.getWidth()/4) {
+                System.out.println("IT WORKS #1");
+                pop.moveX = pop.moveX - 1;
+            }
+
+            if(pop.getX() < katch.getX() + katch.getWidth() && pop.getX() > katch.getX() + katch.getWidth() / 4) {
+                System.out.println("IT WORKS #2");
+                pop.moveX = pop.moveX + 1;
+            }
         }
         for (int i = 0; i < blocks.size(); i++) {
             if (pop.intersects(blocks.get(i)) && !(blocks.get(i).destroyed)) {
                 pop.moveY *= -1;
                 blocks.remove(i);
-                scoreKeeper.addScore(50);
+                scoreKeeper.addScore(25);
             }
         }
         if (pop.intersects(bigleg)) {
@@ -126,21 +121,30 @@ public class GamePanel extends JPanel implements KeyListener {
         Graphics2D g2d = (Graphics2D) g;
         super.paintComponent(g);
         g2d.drawImage(background, 0, 0, null);
-        for (Block block : blocks) {
-            block.draw(g, this);
+        for(int i = 0; i < blocks.size(); i++) {
+            blocks.get(i).draw(g, this);
         }
-        for (Wall wall : walls) {
-            wall.draw(g, this);
+        for(int i = 0; i < walls.size(); i++) {
+            walls.get(i).draw(g, this);
         }
-
-        scoreKeeper.draw(g, this);
+        scoreKeeper.draw(g);
         pop.draw(g, this);
         katch.draw(g, this);
         bigleg.draw(g, this);
+        g.setFont(new Font("Courier New",Font.BOLD, 15));
+        g.setColor(Color.RED);
+        g.drawString("Lives: " + pop.getLives(), 300, 300);
+
     }
 
     private void checkOutOfBounds() {
-        if (pop.y > getHeight()) {
+        if (pop.y > getHeight() && pop.getLives() > 1) {
+            pop.y = 200;
+            pop.x = 305;
+            pop.moveX = 3;
+            pop.moveY = 3;
+            pop.setLives( pop.getLives() - 1);
+        }else if(pop.y > getHeight()) {
             thread = null;
             init();
             reset();
@@ -152,13 +156,6 @@ public class GamePanel extends JPanel implements KeyListener {
     public void update() {
         checkCollisions();
         checkOutOfBounds();
-        if (pop.y > getHeight()) {
-            thread = null;
-            init();
-            reset();
-            mainFrame.setVisible(false);
-            startScreen.setVisible(true);
-        }
         repaint();
     }
 

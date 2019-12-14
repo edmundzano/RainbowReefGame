@@ -1,13 +1,14 @@
-package Game;
+package GameObjects;
+
 import javax.imageio.ImageIO;
 import java.awt.*;
-import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
-public class Pop extends Rectangle {
+public class Block extends Rectangle{
+
     private Image pic;
-    boolean destroyed;  //block gets destroyed
+    public boolean destroyed;  //block gets destroyed
 
     int moveX, moveY;
     private boolean collisionChecked;
@@ -15,7 +16,7 @@ public class Pop extends Rectangle {
 
 
     //x = x-coordinate, y = y-coordinate, h = height, w = width, s = location of image
-    public Pop(int x, int y,int w, int h, String s){
+    public Block(int x, int y,int w, int h, String s){
         this.x = x;
         this.y = y;
 
@@ -39,5 +40,4 @@ public class Pop extends Rectangle {
     public int getCoordinate (int x, int y){
         return x & y;
     }
-
 }

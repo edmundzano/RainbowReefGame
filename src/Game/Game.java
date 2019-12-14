@@ -1,6 +1,8 @@
 package Game;
 
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class Game {
     public static void main(String[] args) {
@@ -9,12 +11,21 @@ public class Game {
 
         JFrame startScreen = new JFrame();
         JButton start = new JButton("Click or press spacebar to start!!");
-                                                                                                                                                                                                                                                                                                                                                                                                                                                    GamePanel panel = new GamePanel(frame, startScreen);
+        GamePanel panel = new GamePanel(frame, startScreen);
 
+        start.addActionListener(new ActionListener()
+        {
+            public void actionPerformed(ActionEvent e)
+            {
+                startScreen.dispose();
+                frame.setVisible(true);
+            }
+        });
+        /*
         start.addActionListener(listener -> {
-            startScreen.setVisible(true);
             frame.setVisible(true);
         });
+         */
 
 
         startScreen.getContentPane().add(start);
@@ -25,7 +36,7 @@ public class Game {
 
         frame.getContentPane().add(panel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setVisible(false); //shows the frame
+        frame.setVisible(true); //shows the frame
         frame.setSize(640, 480);
         frame.setResizable(false);
     }

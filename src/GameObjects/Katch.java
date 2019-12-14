@@ -1,8 +1,7 @@
-package Game;
+package GameObjects;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
-import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
@@ -11,11 +10,7 @@ public class Katch extends Rectangle{
     boolean destroyed;  //block gets destroyed
 
     int moveX, moveY;
-    private boolean collisionChecked;
 
-
-
-    //x = x-coordinate, y = y-coordinate, h = height, w = width, s = location of image
     public Katch(int x, int y,int w, int h, String s){
         this.x = x;
         this.y = y;
