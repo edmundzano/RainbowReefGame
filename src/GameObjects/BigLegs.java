@@ -2,18 +2,16 @@ package GameObjects;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
-import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
 public class BigLegs extends Rectangle {
     private Image pic;
-    boolean destroyed;
+    boolean isDestroyed;
 
 
 
 
-    //x = x-coordinate, y = y-coordinate, h = height, w = width, s = location of image
     public BigLegs(int x, int y,int w, int h, String s){
         this.x = x;
         this.y = y;
@@ -28,7 +26,7 @@ public class BigLegs extends Rectangle {
         }
     }
     public void draw(Graphics g, Component c){
-        if(!destroyed){
+        if(!isDestroyed){
             g.drawImage(pic,x,y,width,height,c);
         }
     }

@@ -8,14 +8,10 @@ import java.io.IOException;
 public class Block extends Rectangle{
 
     private Image pic;
-    public boolean destroyed;  //block gets destroyed
-
+    public boolean isDestroyed;
     int moveX, moveY;
-    private boolean collisionChecked;
 
 
-
-    //x = x-coordinate, y = y-coordinate, h = height, w = width, s = location of image
     public Block(int x, int y,int w, int h, String s){
         this.x = x;
         this.y = y;
@@ -33,7 +29,7 @@ public class Block extends Rectangle{
         }
     }
     public void draw(Graphics g, Component c){
-        if(!destroyed){
+        if(!isDestroyed){
             g.drawImage(pic,x,y,width,height,c);
         }
     }
