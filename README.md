@@ -1,4 +1,4 @@
-# csc413-SecondGame
+# csc413-Rainbow Reef Game
 
 ## Student Name  : Edmund-Russell Manzano
 ## Student ID    : 917032017
