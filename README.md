@@ -1,8 +1,4 @@
-# csc413-Rainbow Reef Game
-
-## Student Name  : Edmund-Russell Manzano
-## Student ID    : 917032017
-
+# Rainbow Reef Game
 
 Super Rainbow Reef was created using IntelliJ IDEA with the version 12 of Java. 
 The current working directory is the Desktop directory on my laptop. The JAR file can run by clicking it or just running through terminal.
